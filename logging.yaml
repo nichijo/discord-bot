@@ -1,0 +1,24 @@
+version: 1
+formatters:
+  default:
+    format: "format=%(asctime)s:%(levelname)s:%(name)s: %(message)s"
+handlers:
+  file:
+    class: logging.FileHandler
+    filename: ./logfiles/discord.log
+    formatter: default
+    encoding: utf-8
+    mode: w
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: default
+    stream: ext://sys.stdout
+loggers:
+  default:
+    level: INFO
+    handlers: [file, console]
+    propagate: no
+root:
+  level: DEBUG
+  handlers: [console]

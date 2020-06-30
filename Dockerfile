@@ -7,5 +7,8 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # add files (実際必要なのは bot.pyだけだから、これだけ渡す)
-COPY bot.py .
-CMD ["python", "./bot.py"]
+COPY src/bot.py ./src/
+COPY logging.yaml .
+COPY src/ ./src/
+COPY logfiles/ ./logfiles/
+CMD ["python", "./src/bot.py"]
