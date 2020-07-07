@@ -2,9 +2,9 @@
 VCに入ったら発言するボットくん
 '''
 import os
-from bots import discord_bot
-from plugin.config import plugins
+from discord.ext.commands import Bot
 from support.config import logger
+from plugin import *
 
 try:
     # discord initialize
@@ -13,7 +13,16 @@ try:
         logger.info(token + "is not defined.")
         raise Exception("トークンが未設定だよ")
 
-    bot = discord_bot.DiscordBot(plugins)
-    bot.run(token)
+    baseBot = Bot(command_prefix = '$',description=None)
+
+    logger.info("cog size :" + str(len(config.cogs)))
+
+    for cog in config.cogs:
+        logger.info(cog)
+        cog.initialize(baseBot)
+
+    logger.info("initialize setup.")
+    baseBot.run(token)
+
 except() as ex:
     logger.exception(ex)

@@ -1,3 +1,5 @@
-__all__ = ['config']
+__all__ = ['config', 'extension', 'vc_watch']
 
-from .config import *
+from .config import cogs
+from .extension import DiscordExtension
+from .vc_watch import VCWatchPluggin

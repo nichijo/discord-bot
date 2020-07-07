@@ -1,6 +1,5 @@
-'''
-各プラグインを共通領域
-'''
+# cog name list
+from typing import List
+from plugin.extension import DiscordExtension
 
-#各プラグインを登録するためのリスト
-plugins = []
+cogs : List[DiscordExtension] = []
